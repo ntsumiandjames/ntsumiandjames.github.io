@@ -3,15 +3,86 @@
 <head>
     <title>Castlebeam</title>
     <style>
-        body { font-family: Futura; padding: 20px; }
-        img { max-height: 90vh; max-width: 90vw; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); object-fit: contain; }
-        h1 { color: #333; position: absolute; top: 20px; left: 0px; margin: 0; }
+        body { 
+            font-family: Futura; 
+            margin: 0; 
+            padding: 0; 
+        }
+        
+        .header {
+            position: absolute;
+            top: 20px;
+            left: 40px;
+            z-index: 10;
+        }
+        
+        h1 { 
+            color: #333; 
+            margin: 0;
+            font-size: 2em;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        img { 
+            max-height: 80vh; 
+            max-width: 90vw; 
+            object-fit: contain;
+            margin-bottom: 30px;
+        }
+        
+        .contact-info {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+        
+        .contact-info p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        
+        .contact-info .email {
+            font-weight: bold;
+            color: #0066cc;
+        }
+        
+        footer {
+            position: fixed; 
+            bottom: 10px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            font-size: 12px; 
+            color: #666; 
+            background: rgba(255,255,255,0.8); 
+            padding: 5px 15px; 
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
-    <h1>Castlebeam</h1>
-    <img src="Sumo101_poster_noBackground.png" alt="Sumo101 Poster">
-    <footer style="position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); font-size: 12px; color: #666; background: rgba(255,255,255,0.8); padding: 5px 15px; border-radius: 5px;">
+    <div class="header">
+        <h1>Castlebeam</h1>
+    </div>
+    
+    <div class="main-content">
+        <img src="Sumo101_poster_noBackground.png" alt="Sumo101 Poster">
+        
+        <div class="contact-info">
+            <p class="email">info@castlebeam.com</p>
+            <p>Film Production Company</p>
+            <p>Los Angeles, CA</p>
+        </div>
+    </div>
+    
+    <footer>
         Copyright ©2025 Castlebeam LLC. All rights reserved.
     </footer>    
 </body>
