@@ -38,6 +38,23 @@
             margin-bottom: 30px;
         }
         
+        /* モバイル・細い画面での調整 */
+        @media (max-width: 768px) {
+            img {
+                width: 80vw;
+                max-height: 70vh;
+                object-fit: contain;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            img {
+                width: 80vw;
+                max-height: 65vh;
+                object-fit: contain;
+            }
+        }
+        
         .contact-info {
             text-align: center;
             margin-top: 20px;
@@ -76,7 +93,7 @@
         <img src="Sumo101_poster_noBackground.png" alt="Sumo101 Poster">
         
         <div class="contact-info">
-            <p class="email">natsumiltakagi@gmail.com</p>
+            <p class="email">info@castlebeam.com</p>
             <p>Film Production Company</p>
             <p>Los Angeles, CA</p>
         </div>
