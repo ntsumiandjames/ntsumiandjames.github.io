@@ -33,23 +33,25 @@
         padding: 60px 20px; /* 少し余白を広げました */
     }
 
-    /* ★ここから修正：画像の高さを揃える設定★ */
+    /* 画像を中央に寄せてバランスを整える設定 */
     .image-container {
         display: flex;
-        flex-wrap: nowrap; /* 横に並べる */
-        justify-content: center;
-        align-items: center; /* 縦方向の中央揃え */
-        gap: 50px; /* ポスター間の距離 */
-        width: auto; /* コンテナの幅を画像に合わせる */
-        max-width: 90vw; /* 画面からはみ出さないように */
-        margin-bottom: 40px;
-        height: 65vh; /* ★コンテナ自体の高さを決める（画面の65%）★ */
+        flex-wrap: nowrap;
+        justify-content: center; /* これで全体を中央に寄せます */
+        align-items: center;
+        gap: 20px; /* ポスター間の隙間を少し狭くして、一体感を出します */
+        width: 100%; /* 幅をいっぱい使って中央配置を安定させます */
+        max-width: 1000px; /* 離れすぎないように最大幅を制限します */
+        margin: 0 auto 40px auto; /* 左右の余白を auto にしてコンテナ自体を中央に */
+        height: 65vh;
     }
     
     .image-container img { 
-        height: 100%; /* ★親コンテナ（65vh）の高さいっぱいに広げる★ */
-        width: auto; /* 幅は自動調整（アスペクト比を維持） */
-        object-fit: contain; /* 画像全体を表示する */
+        height: 100%;
+        width: auto;
+        object-fit: contain;
+        /* 画像自体の左右の余白を少し削って、より中央に寄せます */
+        margin: 0 -10px; 
     }
     
     /* スマホ・タブレットでの調整（縦並びにする） */
