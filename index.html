@@ -2,90 +2,99 @@
 <html>
 <head>
     <title>Castlebeam</title>
-    <style>
-        body { 
-            font-family: Futura, sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            background-color: #fff;
-        }
-        
-        .header {
-            position: absolute;
-            top: 20px;
-            left: 40px;
-            z-index: 10;
-        }
-        
-        h1 { 
-            color: #333; 
-            margin: 0;
-            font-size: 2em;
-        }
-        
-        .main-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
+<style>
+    /* （上部はそのまま） */
+    body { 
+        font-family: Futura, sans-serif; 
+        margin: 0; 
+        padding: 0; 
+        background-color: #fff;
+    }
+    
+    .header {
+        position: absolute;
+        top: 20px;
+        left: 40px;
+        z-index: 10;
+    }
+    
+    h1 { 
+        color: #333; 
+        margin: 0;
+        font-size: 2em;
+    }
+    
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 60px 20px; /* 少し余白を広げました */
+    }
 
-        /* 画像を横に並べるための設定 */
+    /* ★ここから修正：画像の高さを揃える設定★ */
+    .image-container {
+        display: flex;
+        flex-wrap: nowrap; /* 横に並べる */
+        justify-content: center;
+        align-items: center; /* 縦方向の中央揃え */
+        gap: 50px; /* ポスター間の距離 */
+        width: auto; /* コンテナの幅を画像に合わせる */
+        max-width: 90vw; /* 画面からはみ出さないように */
+        margin-bottom: 40px;
+        height: 65vh; /* ★コンテナ自体の高さを決める（画面の65%）★ */
+    }
+    
+    .image-container img { 
+        height: 100%; /* ★親コンテナ（65vh）の高さいっぱいに広げる★ */
+        width: auto; /* 幅は自動調整（アスペクト比を維持） */
+        object-fit: contain; /* 画像全体を表示する */
+    }
+    
+    /* スマホ・タブレットでの調整（縦並びにする） */
+    @media (max-width: 768px) {
         .image-container {
-            display: flex;
+            flex-direction: column;
             flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 40px; /* ポスター間の距離 */
-            width: 100%;
-            margin-bottom: 30px;
+            height: auto; /* 縦並びなので高さ制限を解除 */
+            gap: 30px;
         }
-        
-        .image-container img { 
-            max-height: 70vh; 
-            max-width: 40vw; 
-            object-fit: contain;
+        .image-container img {
+            width: 80vw; /* 横幅を基準にする */
+            height: auto; /* 高さは自動 */
+            max-height: 45vh; /* 大きくなりすぎないように */
         }
-        
-        /* スマホ・タブレットでは縦に並べる */
-        @media (max-width: 768px) {
-            .image-container {
-                flex-direction: column;
-                gap: 20px;
-            }
-            .image-container img {
-                max-width: 80vw;
-                max-height: 50vh;
-            }
-        }
-        
-        .contact-info {
-            text-align: center;
-            color: #333;
-        }
-        
-        .contact-info p {
-            margin: 5px 0;
-            font-size: 16px;
-        }
-        
-        .contact-info .email {
-            font-weight: bold;
-            color: #0066cc;
-        }
-        
-        footer {
-            position: fixed; 
-            bottom: 10px; 
-            left: 50%; 
-            transform: translateX(-50%); 
-            font-size: 11px; 
-            color: #999; 
-            white-space: nowrap;
-        }
-    </style>
+    }
+    
+    .contact-info {
+        text-align: center;
+        color: #333;
+    }
+    
+    .contact-info p {
+        margin: 5px 0;
+        font-size: 16px;
+    }
+    
+    .contact-info .email {
+        font-weight: bold;
+        color: #0066cc;
+    }
+    
+    footer {
+        position: fixed; 
+        bottom: 10px; 
+        left: 50%; 
+        transform: translateX(-50%); 
+        font-size: 11px; 
+        color: #999; 
+        white-space: nowrap;
+        background: rgba(255,255,255,0.8);
+        padding: 2px 10px;
+        border-radius: 4px;
+    }
+</style>
 </head>
 <body>
     <div class="header">
