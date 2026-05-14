@@ -34,23 +34,35 @@
         padding: 80px 20px 20px 20px; /* 上にタイトル用の余白 */
     }
 
+    /* ★修正点：image-containerのmax-widthを広げる（画像2枚が離れすぎないように）★ */
     .image-container {
         display: flex;
         flex-wrap: nowrap;
         justify-content: center;
         align-items: center;
-        gap: 30px;
-        flex-grow: 1; /* 画像エリアが可能な限り広がる */
-        min-height: 0; /* はみ出し防止の重要設定 */
-        width: 100%;
+        gap: 50px; /* ポスター間の距離 */
+        width: auto;
+        max-width: 95vw; /* ★ここを広げました★ */
+        margin: 0 auto 40px auto;
+        height: 65vh;
     }
     
+    /* ★修正点：2枚の画像に個別のクラスを適用できるように設定★ */
     .image-container img { 
-        max-height: 100%; /* 親要素(flex-grow)の高さに合わせる */
-        max-width: 45vw; 
-        height: auto;
+        height: 100%; /* 高さは揃えたまま */
         width: auto;
         object-fit: contain;
+        margin: 0;
+    }
+
+    /* 左のポスター（Echoes of the Forgotten） */
+    .poster-echoes {
+        max-width: 40vw; /* 元の基準 */
+    }
+
+    /* ★修正点：右のポスター（Sumo101）だけ幅を15%拡大★ */
+    .poster-sumo {
+        max-width: 46vw; /* 40vw × 1.15 = 46vw */
     }
     
     .contact-info {
