@@ -72,29 +72,30 @@
     .contact-info {
         text-align: center;
         color: #333;
+        margin-top: 10px; /* 画像との間隔 */
+        line-height: 1.2; /* ★行間を狭くしました（標準は1.5〜1.6）★ */
     }
     
     .contact-info p {
-        margin: 5px 0;
-        font-size: 16px;
+        margin: 2px 0; /* ★段落前後の余白を最小限にしました★ */
+        font-size: 15px;
     }
     
     .contact-info .email {
         font-weight: bold;
         color: #0066cc;
+        margin-bottom: 5px; /* メールアドレスの下だけ少しあける */
     }
     
     footer {
-        position: fixed; 
-        bottom: 10px; 
-        left: 50%; 
-        transform: translateX(-50%); 
+        /* position: fixed をやめて、自然な流れで下に配置します */
+        width: 100%;
+        text-align: center;
+        margin-top: 50px; /* ★上のコンテンツとの間にしっかり余白を作ります★ */
+        padding-bottom: 20px;
         font-size: 11px; 
         color: #999; 
-        white-space: nowrap;
-        background: rgba(255,255,255,0.8);
-        padding: 2px 10px;
-        border-radius: 4px;
+        position: relative; /* 固定を解除 */
     }
 </style>
 </head>
@@ -114,10 +115,10 @@
             <p>Film Production Company</p>
             <p>Los Angeles, CA</p>
         </div>
+        
+        <footer>
+            Copyright ©2025 Castlebeam LLC. All rights reserved.
+        </footer>
     </div>
-    
-    <footer>
-        Copyright ©2025 Castlebeam LLC. All rights reserved.
-    </footer>    
 </body>
 </html>
