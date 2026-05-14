@@ -1,132 +1,121 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
+    <meta charset="UTF-8">
     <title>Castlebeam</title>
-<style>
-    /* （上部はそのまま） */
-    body { 
-        font-family: Futura, sans-serif; 
-        margin: 0; 
-        padding: 0; 
-        background-color: #fff;
-    }
-    
-    .header {
-        position: absolute;
-        top: 20px;
-        left: 40px;
-        z-index: 10;
-    }
-    
-    h1 { 
-        color: #333; 
-        margin: 0;
-        font-size: 2em;
-    }
-    
-    .main-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between; /* 上・中・下に均等配置 */
-        height: 100vh; /* 画面の高さ100%に固定 */
-        box-sizing: border-box;
-        padding: 80px 20px 20px 20px; /* 上にタイトル用の余白 */
-    }
-
-    /* ★修正点：image-containerのmax-widthを広げる（画像2枚が離れすぎないように）★ */
-    .image-container {
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: center;
-        align-items: center;
-        gap: 50px; /* ポスター間の距離 */
-        width: auto;
-        max-width: 95vw; /* ★ここを広げました★ */
-        margin: 0 auto 40px auto;
-        height: 65vh;
-    }
-    
-    /* ★修正点：2枚の画像に個別のクラスを適用できるように設定★ */
-    .image-container img { 
-        height: 100%; /* 高さは揃えたまま */
-        width: auto;
-        object-fit: contain;
-        margin: 0;
-    }
-
-    /* 左のポスター（Echoes of the Forgotten） */
-    .poster-echoes {
-        max-width: 40vw; /* 元の基準 */
-    }
-
-    /* ★修正点：右のポスター（Sumo101）だけ幅を15%拡大★ */
-    .poster-sumo {
-        max-width: 46vw; /* 40vw × 1.15 = 46vw */
-    }
-    
-    .contact-info {
-        text-align: center;
-        color: #333;
-        margin: 20px 0 10px 0; /* 上下の余白 */
-        line-height: 1.2;
-        flex-shrink: 0; /* 連絡先が潰れないように固定 */
-    }
-    
-    footer {
-        width: 100%;
-        text-align: center;
-        padding-bottom: 10px;
-        font-size: 11px; 
-        color: #999;
-        flex-shrink: 0; /* フッターが潰れないように固定 */
-    }
-
-    /* スマホでは縦に並べるが、スクロールは許可する */
-    @media (max-width: 768px) {
+    <style>
+        body { 
+            font-family: Futura, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #fff;
+            overflow: hidden; /* パソコンでスクロールバーを出さない */
+        }
+        
+        .header {
+            position: absolute;
+            top: 20px;
+            left: 40px;
+            z-index: 10;
+        }
+        
+        h1 { 
+            color: #333; 
+            margin: 0;
+            font-size: 2em;
+        }
+        
         .main-content {
-            height: auto; /* スマホは画面が狭いのでスクロールOKに */
-            min-height: 100vh;
-        }
-        .image-container {
+            display: flex;
             flex-direction: column;
-            height: auto;
+            align-items: center;
+            justify-content: space-between; /* 上・中・下に均等配置 */
+            height: 100vh; /* 画面の高さ100%に固定 */
+            box-sizing: border-box;
+            padding: 80px 20px 20px 20px;
         }
-        .image-container img {
-            width: 80vw;
-            max-height: 40vh;
+
+        /* 画像を中央に寄せ、バランスを整えるコンテナ */
+        .image-container {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            gap: 40px; /* ポスター同士の間隔 */
+            width: 100%;
+            max-width: 1000px; /* 広がりすぎを防いで中央に寄せる */
+            flex-grow: 1; 
+            min-height: 0; 
+            margin: 0 auto;
         }
-    }
-    
-    .contact-info {
-        text-align: center;
-        color: #333;
-        margin-top: 10px; /* 画像との間隔 */
-        line-height: 1.2; /* ★行間を狭くしました（標準は1.5〜1.6）★ */
-    }
-    
-    .contact-info p {
-        margin: 2px 0; /* ★段落前後の余白を最小限にしました★ */
-        font-size: 15px;
-    }
-    
-    .contact-info .email {
-        font-weight: bold;
-        color: #0066cc;
-        margin-bottom: 5px; /* メールアドレスの下だけ少しあける */
-    }
-    
-    footer {
-        /* position: fixed をやめて、自然な流れで下に配置します */
-        width: 100%;
-        text-align: center;
-        margin-top: 50px; /* ★上のコンテンツとの間にしっかり余白を作ります★ */
-        padding-bottom: 20px;
-        font-size: 11px; 
-        color: #999; 
-        position: relative; /* 固定を解除 */
-    }
-</style>
+        
+        .image-container img { 
+            height: 90%; /* コンテナ内での高さ */
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* 右のポスター（Sumo101）だけ少し大きくする */
+        .poster-sumo {
+            transform: scale(1.15); /* 15%拡大 */
+            transform-origin: center;
+        }
+        
+        .contact-info {
+            text-align: center;
+            color: #333;
+            margin: 15px 0 5px 0;
+            line-height: 1.2; /* 行間を狭く */
+            flex-shrink: 0;
+        }
+        
+        .contact-info p {
+            margin: 2px 0;
+            font-size: 15px;
+        }
+        
+        .contact-info .email {
+            font-weight: bold;
+            color: #0066cc;
+        }
+        
+        footer {
+            width: 100%;
+            text-align: center;
+            padding-bottom: 15px;
+            font-size: 11px; 
+            color: #999;
+            flex-shrink: 0;
+        }
+
+        /* スマホ・タブレット用の調整 */
+        @media (max-width: 768px) {
+            body {
+                overflow: auto; /* スマホはスクロールを許可 */
+            }
+            .main-content {
+                height: auto;
+                min-height: 100vh;
+                padding-top: 100px;
+            }
+            .image-container {
+                flex-direction: column;
+                height: auto;
+                gap: 30px;
+            }
+            .image-container img {
+                width: 80vw;
+                height: auto;
+                max-height: 40vh;
+            }
+            .poster-sumo {
+                transform: scale(1); /* スマホでは拡大を解除してバランスをとる */
+            }
+            footer {
+                margin-top: 30px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="header">
@@ -135,8 +124,8 @@
     
     <div class="main-content">
         <div class="image-container">
-            <img src="260514_Echoes of the Forgotten_Poster.jpg" alt="Echoes of the Forgotten Poster">
-            <img src="Sumo101_poster_noBackground.png" alt="Sumo101 Poster">
+            <img src="260514_Echoes of the Forgotten_Poster.jpg" alt="Echoes of the Forgotten Poster" class="poster-echoes">
+            <img src="Sumo101_poster_noBackground.png" alt="Sumo101 Poster" class="poster-sumo">
         </div>
 
         <div class="contact-info">
